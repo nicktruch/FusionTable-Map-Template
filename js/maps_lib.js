@@ -21,24 +21,24 @@ var MapsLib = {
 
   //the encrypted Table ID of your Fusion Table (found under File => About)
   //NOTE: numeric IDs will be depricated soon
-  fusionTableId:      "1m4Ez9xyTGfY2CU6O-UgEcPzlS0rnzLU93e4Faa0",
+  fusionTableId:      "1WEN4lGHuaCwcKPxqi3AKIMoK6MXathPt4gV3Q-g",
 
   //*New Fusion Tables Requirement* API key. found at https://code.google.com/apis/console/
   //*Important* this key is for demonstration purposes. please register your own.
-  googleApiKey:       "AIzaSyA3FQFrNr5W2OEVmuENqhb2MBB2JabdaOY",
+  googleApiKey:       "AIzaSyBrmPgMiiBe1I_taPIBTkm3qo-DMlIhVYg",
 
   //name of the location column in your Fusion Table.
   //NOTE: if your location column name has spaces in it, surround it with single quotes
   //example: locationColumn:     "'my location'",
-  locationColumn:     "geometry",
+  locationColumn:     "Geoloc",
 
-  map_centroid:       new google.maps.LatLng(41.8781136, -87.66677856445312), //center that your map defaults to
-  locationScope:      "chicago",      //geographical area appended to all address searches
+  map_centroid:       new google.maps.LatLng(46.939622, 2.568359), //center that your map defaults to
+  locationScope:      "France",      //geographical area appended to all address searches
   recordName:         "result",       //for showing number of results
   recordNamePlural:   "results",
 
   searchRadius:       805,            //in meters ~ 1/2 mile
-  defaultZoom:        11,             //zoom level when map is loaded (bigger is more zoomed in)
+  defaultZoom:        6,             //zoom level when map is loaded (bigger is more zoomed in)
   addrMarkerImage:    'images/blue-pushpin.png',
   currentPinpoint:    null,
 
@@ -89,6 +89,9 @@ var MapsLib = {
 
     //-----custom filters-------
 
+
+
+
     //-------end of custom filters--------
 
     if (address != "") {
@@ -102,7 +105,7 @@ var MapsLib = {
           $.address.parameter('address', encodeURIComponent(address));
           $.address.parameter('radius', encodeURIComponent(MapsLib.searchRadius));
           map.setCenter(MapsLib.currentPinpoint);
-          map.setZoom(14);
+          map.setZoom(6);
 
           MapsLib.addrMarker = new google.maps.Marker({
             position: MapsLib.currentPinpoint,
@@ -118,7 +121,7 @@ var MapsLib = {
           MapsLib.submitSearch(whereClause, map, MapsLib.currentPinpoint);
         }
         else {
-          alert("We could not find your address: " + status);
+          alert("Nous n'avons pas pu trouver votre adresse : " + status);
         }
       });
     }
